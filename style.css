@@ -7,8 +7,7 @@
 html, body {
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  background: transparent; /* 不要黑色背景，透明即可 */
+  background: #fff;
 }
 
 #slider {
@@ -16,6 +15,7 @@ html, body {
   height: 100vh;
   position: relative;
   overflow: hidden;
+  background: transparent;
 }
 
 /* 基础图片样式 */
@@ -23,25 +23,26 @@ html, body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
+  transform: translate(-50%, -50%);
 }
 
-/* 当前激活图片 */
+/* 激活图片的共同特征 */
 #slider img.active {
   opacity: 1;
   z-index: 1;
 }
 
-/* 普通图片（正常图片）*/
-#slider.normal img.active {
-  object-fit: contain; /* 不裁剪，保持完整，可能有黑边 */
+/* 普通模式：完全显示、不裁剪 */
+#slider img.active[data-type="normal"] {
+  object-fit: contain;
 }
 
-/* 全景图片（宽图模式）*/
-#slider.wide img.active {
-  object-fit: cover; /* 会裁剪，充满整个容器，无黑边 */
+/* 全景模式：填满屏幕，裁剪以适配容器 */
+#slider img.active[data-type="wide"] {
+  object-fit: cover;
 }
+

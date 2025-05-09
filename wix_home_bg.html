@@ -1,1 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wix Home Background</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .overlay {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.4); /* 可选的暗层以提高文字可读性 */
+    }
+
+    .overlay h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .overlay p {
+      font-size: 1.2rem;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+
+  <video class="video-background" autoplay muted loop playsinline>
+    <source src="https://yakumoinori.github.io/wix-image-slider/video/HOME背景1.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="overlay">
+    <div>
+      <h1>Startup cradle, millionaire maker</h1>
+      <p>No matter the size of your business or if you're an individual, we can help you develop, manufacture, and ship to your customers.</p>
+    </div>
+  </div>
+
+</body>
+</html>
 

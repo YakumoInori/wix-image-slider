@@ -1,47 +1,28 @@
-const images = document.querySelectorAll("#slider img");
+const slider = document.getElementById('slider');
+const images = slider.querySelectorAll('img');
 let index = 0;
-const total = images.length;
 const delay = 5000;
 
-function applyTypeStyle(img) {
+function applyStyle(img) {
   const type = img.dataset.type;
-
-  img.style.objectFit = "";
-  img.style.width = "";
-  img.style.height = "";
-  img.style.top = "";
-  img.style.left = "";
-  img.style.transform = "";
-
-  if (type === "wide") {
-    img.style.objectFit = "cover";
-    img.style.width = "100%";
-    img.style.height = "auto";
-    img.style.top = "50%";
-    img.style.left = "0";
-    img.style.transform = "translateY(-50%)";
+  if (type === 'normal') {
+    img.style.objectFit = 'contain';
+    img.style.background = '#000'; // optional
   } else {
-    img.style.objectFit = "contain";
-    img.style.width = "auto";
-    img.style.height = "100%";
-    img.style.left = "50%";
-    img.style.top = "0";
-    img.style.transform = "translateX(-50%)";
+    img.style.objectFit = 'cover';
+    img.style.background = '#000'; // optional
   }
 }
 
-// ✅ 初始化
-images.forEach(img => img.classList.remove("active"));
-images[0].classList.add("active");
-applyTypeStyle(images[0]);
+images.forEach(applyStyle);
 
-// ✅ 循环切换
+function slideTo(index) {
+  slider.style.transform = `translateX(-${index * 100}vw)`;
+  applyStyle(images[index]);
+}
+
 setInterval(() => {
-  images[index].classList.remove("active");
-
-  index = (index + 1) % total;
-
-  images[index].classList.add("active");
-  applyTypeStyle(images[index]);
+  index = (index + 1) % images.length;
+  slideTo(index);
 }, delay);
 

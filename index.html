@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Responsive Image Slider</title>
+  <title>Sliding Image Carousel</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <div id="slider">
-    <img src="images/IMG_20250505_142838.jpg" class="active" data-type="normal" />
-    <img src="images/IMG_20250505_143100.jpg" data-type="wide" />
-    <img src="images/IMG_20250507_103323.jpg" data-type="wide" />
+  <div class="slider-container">
+    <div id="slider" class="slider-track">
+      <img src="images/IMG_20250505_142838.jpg" data-type="normal" />
+      <img src="images/IMG_20250505_143100.jpg" data-type="wide" />
+      <img src="images/IMG_20250507_103323.jpg" data-type="wide" />
+    </div>
   </div>
-
   <script src="slider.js"></script>
 </body>
 </html>

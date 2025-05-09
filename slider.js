@@ -1,11 +1,11 @@
 const images = document.querySelectorAll("#slider img");
 let index = 0;
-const interval = 5000;
+const total = images.length;
+const delay = 5000;
 
 function applyTypeStyle(img) {
   const type = img.dataset.type;
 
-  // 重置所有内联样式
   img.style.objectFit = "";
   img.style.width = "";
   img.style.height = "";
@@ -22,22 +22,26 @@ function applyTypeStyle(img) {
     img.style.transform = "translateY(-50%)";
   } else {
     img.style.objectFit = "contain";
-    img.style.height = "100%";
     img.style.width = "auto";
+    img.style.height = "100%";
     img.style.left = "50%";
     img.style.top = "0";
     img.style.transform = "translateX(-50%)";
   }
 }
 
+// ✅ 初始化
+images.forEach(img => img.classList.remove("active"));
+images[0].classList.add("active");
+applyTypeStyle(images[0]);
+
+// ✅ 循环切换
 setInterval(() => {
   images[index].classList.remove("active");
-  index = (index + 1) % images.length;
+
+  index = (index + 1) % total;
+
   images[index].classList.add("active");
-
-  // ✅ 强制刷新样式
   applyTypeStyle(images[index]);
-}, interval);
+}, delay);
 
-// ✅ 初始化第一张图的样式
-applyTypeStyle(images[0]);

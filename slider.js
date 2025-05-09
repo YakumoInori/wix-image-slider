@@ -1,14 +1,17 @@
 const images = document.querySelectorAll("#slider img");
+const slider = document.getElementById("slider");
 let index = 0;
 
-const slider = document.getElementById("slider");
+function updateSlider() {
+  images.forEach(img => img.classList.remove('active'));
 
-setInterval(() => {
-  images[index].classList.remove("active");
-  index = (index + 1) % images.length;
-  images[index].classList.add("active");
+  images[index].classList.add('active');
 
-  // ⚠️ 修复点：保留原始 slider 类名
   const type = images[index].dataset.type;
   slider.className = `slider ${type}`;
-}, 5000);
+  
+  index = (index + 1) % images.length;
+}
+
+setInterval(updateSlider, 5000); // 每5秒自动轮播一次
+window.onload = updateSlider; // 确保加载后立即执行一次

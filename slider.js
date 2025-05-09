@@ -1,28 +1,8 @@
-const slider = document.getElementById('slider');
-const images = slider.querySelectorAll('img');
+const images = document.querySelectorAll("#slider img");
 let index = 0;
-const delay = 5000;
-
-function applyStyle(img) {
-  const type = img.dataset.type;
-  if (type === 'normal') {
-    img.style.objectFit = 'contain';
-    img.style.background = '#000'; // optional
-  } else {
-    img.style.objectFit = 'cover';
-    img.style.background = '#000'; // optional
-  }
-}
-
-images.forEach(applyStyle);
-
-function slideTo(index) {
-  slider.style.transform = `translateX(-${index * 100}vw)`;
-  applyStyle(images[index]);
-}
 
 setInterval(() => {
+  images[index].classList.remove("active");
   index = (index + 1) % images.length;
-  slideTo(index);
-}, delay);
-
+  images[index].classList.add("active");
+}, 5000);

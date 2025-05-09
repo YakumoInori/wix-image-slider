@@ -7,7 +7,7 @@ setInterval(() => {
   index = (index + 1) % images.length;
   images[index].classList.add("active");
 
-  // 自动切换容器样式
+  // ✅ 确保保留 slider 原有类名，避免样式丢失
   const type = images[index].dataset.type;
-  slider.className = type;
+  slider.className = `slider ${type}`;  // 保留 "slider" 再加类型
 }, 5000);

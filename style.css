@@ -1,14 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+#slider {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+#slider img {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
 #slider img.active {
   opacity: 1;
   z-index: 1;
-}
-
-/* 广义兼容样式，忽略 normal */
-#slider img.active[data-type="wide"],
-#slider img.active[data-type="normal"] {
-  object-fit: cover;
-  width: 100%;
-  height: auto;
-  top: 50%;
-  transform: translateY(-50%);
 }
